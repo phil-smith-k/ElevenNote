@@ -101,6 +101,10 @@
     <Compile Include="Migrations\202002272030095_CategoryTable.designer.cs">
       <DependentUpon>202002272030095_CategoryTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002272113392_AddedOwnerId.cs" />
+    <Compile Include="Migrations\202002272113392_AddedOwnerId.designer.cs">
+      <DependentUpon>202002272113392_AddedOwnerId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002272030095_CategoryTable.resx">
       <DependentUpon>202002272030095_CategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002272113392_AddedOwnerId.resx">
+      <DependentUpon>202002272113392_AddedOwnerId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
