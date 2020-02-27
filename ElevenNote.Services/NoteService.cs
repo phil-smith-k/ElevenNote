@@ -73,7 +73,6 @@ namespace ElevenNote.Services
                 return query.ToArray();
             }
         }
-
         public bool UpdateNote(NoteEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -90,7 +89,6 @@ namespace ElevenNote.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
         public bool DeleteNote(int noteId)
         {
             using (var ctx = new ApplicationDbContext())

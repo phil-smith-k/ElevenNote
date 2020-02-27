@@ -34,6 +34,7 @@ namespace ElevenNote.Data
         }
 
         public DbSet<Note> Notes { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         /*This method is called by entity framework on creation of the context to build the model and its mapping in memory. Comes from the DbContext class.*/
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
