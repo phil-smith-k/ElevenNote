@@ -9,7 +9,6 @@ namespace ElevenNote.Models
 {
     public class NoteListItem
     {
-        [Key]
         public int NoteId { get; set; }
         public string Title { get; set; }
 

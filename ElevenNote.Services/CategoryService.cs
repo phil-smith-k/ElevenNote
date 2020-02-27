@@ -17,7 +17,6 @@ namespace ElevenNote.Services
             _userId = userId;
         }
 
-        //Create
         public bool CreateCategory(CategoryCreate category)
         {
             var entity = new Category
@@ -33,10 +32,62 @@ namespace ElevenNote.Services
             }
         }
 
-        //Read
         
-        //Update
+        public CategoryListItem GetCategoryById(int id)
+        {
+            using (ApplicationDbContext ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Categories
+                    .FirstOrDefault(c => c.OwnerId == _userId && c.CategoryId == id);
 
-        //Delete
+                return new CategoryListItem
+                {
+                    CategoryId = entity.CategoryId,
+                    Name = entity.Name
+                };
+            }
+        }
+        public IEnumerable<CategoryListItem> GetAllCategories()
+        {
+            using (ApplicationDbContext ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Categories
+                   .Where(c => c.OwnerId == _userId)
+                   .Select(c => new CategoryListItem
+                   {
+                       CategoryId = c.CategoryId,
+                       Name = c.Name
+                   });  
+                 
+                return query.ToArray();
+            }
+        }
+        
+        public bool UpdateCategory(CategoryEdit category)
+        {
+            using (ApplicationDbContext ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx.Categories
+                       .FirstOrDefault(c => c.OwnerId == _userId && c.CategoryId == category.CategoryId);
+
+                entity.Name = category.Name;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        
+        public bool DeleteCategoryById(int id)
+        {
+            using (ApplicationDbContext ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Categories
+                    .FirstOrDefault(c => c.OwnerId == _userId && c.CategoryId == id);
+
+                ctx.Categories.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

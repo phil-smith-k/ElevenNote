@@ -13,7 +13,11 @@ namespace ElevenNote.WebAPI.Controllers
     public class CategoryController : ApiController
     {
         //Get
-
+        public IHttpActionResult Get()
+        {
+            var service = CreateCategoryService();
+            return Ok(service.GetAllCategories());
+        }
         //GetById
 
         //Post
