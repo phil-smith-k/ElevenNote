@@ -65,7 +65,7 @@ namespace ElevenNote.WebAPI.Controllers
         {
             var service = CreateNoteService();
 
-            if (!service.DeleteItemById(id))
+            if (!service.DeleteNote(id))
                 return InternalServerError();
             else
                 return Ok();
